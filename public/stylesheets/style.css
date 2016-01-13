@@ -1,0 +1,22 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+.image{
+  height: 20vh;
+  width: 20vw;
+}
+.imageshow{
+  height: 40%;
+  width: 40%;
+}
+.each{
+  display: flex;
+  flex-direction: row;
+  width: 30vw;
+
+}

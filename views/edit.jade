@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  
+  
+  h1 edit 
+    form(action="/restaurants/#{id}", method="POST")
+      input(type="text" placeholder="Name" name="name"  value='#{name}')
+      input(type="text" placeholder="City" name="city"  value='#{city}')
+      select(name="state")
+        option(value="CO" selected=(state ?(state==='CO' ? true : undefined): undefined)) CO
+        option(value="CA" selected=(state ?(state==='CA' ? true : undefined): undefined)) CA
+        option(value="NY" selected=(state ?(state==='NY' ? true : undefined): undefined)) NY
+        option(value="AZ" selected=(state ?(state==='AZ' ? true : undefined): undefined)) AZ
+        option(value="HI" selected=(state ?(state==='HI' ? true : undefined): undefined)) HI
+        option(value="TX" selected=(state ?(state==='TX' ? true : undefined): undefined)) TX
+        option(value="FL" selected=(state ?(state==='FL' ? true : undefined): undefined)) FL
+        option(value="VT" selected=(state ?(state==='VT' ? true : undefined): undefined)) VT
+        option(value="OR" selected=(state ?(state==='OR' ? true : undefined): undefined)) OR
+        option(value="WY" selected=(state ?(state==='WY' ? true : undefined): undefined)) WY
+      select(name="cuisine")
+        option(value="American" selected=(cuisine ?(cuisine==='American' ? true : udefined): undefined)) American
+        option(value="Thai" selected=(cuisine ?(cuisine==='Thai' ? true : udefined): undefined)) Thai
+        option(value="Chinese" selected=(cuisine ?(cuisine==='Chinese' ? true : udefined): undefined)) Chinese
+        option(value="Vietnamese" selected=(cuisine ?(cuisine==='Vietnamese' ? true : udefined): undefined)) Vietnamese
+        option(value="Mexican" selected=(cuisine ?(cuisine==='Mexican' ? true : udefined): undefined)) Mexican
+        option(value="Chilean" selected=(cuisine ?(cuisine==='Chilean' ? true : udefined): undefined)) Chilean
+      input(type="radio" name="rating" value="1" checked)
+      input(type="radio" name="rating" value="2") 
+      input(type="radio" name="rating" value="3") 
+      input(type="radio" name="rating" value="4") 
+      input(type="radio" name="rating" value="5")  
+      input(type="text" placeholder="image URL" name="image"  value='#{image}')
+      textarea(type="text" placeholder="bio" name="bio") #{bio}
+      input(type="submit")

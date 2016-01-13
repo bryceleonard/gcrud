@@ -1,0 +1,20 @@
+extends layout
+
+block content
+
+  h1 home Page
+  
+  a(href="/restaurants/new") Create a new restaurant
+  
+  each item in result
+      h2 
+        a(href='/restaurants/#{item.id}') #{item.name}
+        h4 #{item.city}, #{item.state}
+        h5 #{item.cuisine} -- #{item.rating} Stars!!
+        img(src="#{item.image}" class="image")
+        br
+        br
+        br
+        br
+      
+  

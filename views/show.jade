@@ -1,0 +1,19 @@
+extends layout
+
+block content
+
+  h1 #{name}
+  h2 #{city} #{state}
+  h2 #{cuisine} -- #{rating} Stars!!!
+  img(src="#{image}" class="imageshow")
+  h3 #{bio}
+  
+  
+  form(action="/restaurants/#{id}/delete" method="POST")       
+    button(type="submit") Delete
+    
+  form(action="/restaurants/#{id}/edit" method="GET")
+    
+    button(type="submit") Edit
+  
+  

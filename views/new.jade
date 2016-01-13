@@ -1,0 +1,39 @@
+extends layout
+
+block content
+
+
+  h1 new
+    form(action="/restaurants" method="POST")
+      input(type="text" placeholder="Name" name="name")
+      br
+      input(type="text" placeholder="City" name="city")
+      br
+      select(name="state")
+        option(value="CO") CO
+        option(value="CA") CA
+        option(value="NY") NY
+        option(value="AZ") AZ
+        option(value="HI") HI
+        option(value="TX") TX
+        option(value="FL") FL
+        option(value="VT") VT
+        option(value="OR") OR
+        option(value="WY") WY
+      select(name="cuisine")
+        option(value="American") American
+        option(value="Thai") Thai
+        option(value="Chinese") Chinese
+        option(value="Vietnamese") Vietnamese
+        option(value="Mexican") Mexican
+        option(value="Chilean") Chilean
+      input(type="radio" name="rating" value="1" checked)
+      input(type="radio" name="rating" value="2") 
+      input(type="radio" name="rating" value="3") 
+      input(type="radio" name="rating" value="4") 
+      input(type="radio" name="rating" value="5")  
+      input(type="text" placeholder="image URL" name="image")
+      textarea(type="text" placeholder="bio" name="bio")
+      input(type="submit")
+      
+      
