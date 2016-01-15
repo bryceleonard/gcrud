@@ -5,7 +5,9 @@ var knex = require('../db/knex');
 function Restaurants() {
   return knex('restaurants');
 }
-
+function Employees() {
+  return knex('employees');
+}
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -50,6 +52,8 @@ router.post('/restaurants', function(req, res, next) {
 
 
 router.get('/restaurants/:id', function(req, res, next) {
+  Employees().where({restaurant_id: req.params.id}).then(function(employees){
+
   Restaurants().where('id', req.params.id).first().then(function(result){
       var id = result.id
       var name = result.name
@@ -59,8 +63,9 @@ router.get('/restaurants/:id', function(req, res, next) {
       var rating = result.rating
       var image = result.image
       var bio = result.bio
-      res.render('show', {id:id, name:name, city:city, state:state, cuisine:cuisine, rating:rating, image:image, bio:bio})
+      res.render('show', {id:id, name:name, city:city, state:state, cuisine:cuisine, rating:rating, image:image, bio:bio, employees:employees})
   })
+})
 })
 
 
@@ -102,4 +107,51 @@ router.post('/restaurants/:id/delete', function(req, res, next) {
     res.redirect('/restaurants')
   })
 })
+
+
+
+
+
+router.post('/employees/:id/delete', function(req, res, next) {
+  Employees().where({id:req.body.id}).del().then(function(results){
+    res.redirect('/restaurants')
+  })
+})
+
+
+
+router.post('/employees/:id/edit', function(req, res, next) {
+  Employees().where({id:req.body.id}).update({
+    firstname:req.body.firstname
+  }).then(function(results){
+      res.redirect('/restaurants')
+  })
+});
+
+
+
+
+
+router.get('/admin', function(req, res, next) {
+  knex.select().table('restaurants').then(function(result) {
+
+     res.render('admin', {result : result})
+  })
+})
+router.post('/admin', function(req, res, next) {
+  Employees().insert({
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    restaurant_id: req.body.restaurant_id
+  }, 'id').then(function(result){
+    res.redirect('/restaurants')
+  })
+})
+
+
+
+router.get('/review/:id', function(req, res, next) {
+  res.render('review', {x:req.params.id});
+});
+
 module.exports = router;

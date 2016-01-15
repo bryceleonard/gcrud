@@ -20,3 +20,17 @@ a {
   width: 30vw;
 
 }
+.input{
+  border: none;
+  font-size: 1.5em;
+
+}
+.update{
+  margin-top: 0;
+}
+.delete{
+  margin-left: 215px;
+}
+.create{
+  float: right;
+}

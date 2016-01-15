@@ -4,16 +4,49 @@ block content
 
   h1 #{name}
   h2 #{city} #{state}
-  h2 #{cuisine} -- #{rating} Stars!!!
+  h3 #{cuisine} -- #{rating} Stars!!!
   img(src="#{image}" class="imageshow")
-  h3 #{bio}
-  
-  
+  p bio: #{bio}
   form(action="/restaurants/#{id}/delete" method="POST")       
     button(type="submit") Delete
     
   form(action="/restaurants/#{id}/edit" method="GET")
     
     button(type="submit") Edit
+
+  br
+  br
+  br
+  form(action="/review/#{id}" method="GET")
+    input(type="submit" value="add review")
+  br
+  br
+  br
   
+  h1 employees
+  each employee in employees
+    form(id="form" action="/employees/:id/edit" method="POST")
+      input(type="text" hidden name="id" value="#{employee.id}")
+      input(class="input" type="text" name="firstname" value="#{employee.firstname}")
+      input(class="update" type="submit" value="edit")
+    form(action="/employees/:id/delete" method="POST")
+      input(type="text" hidden name="id" value="#{employee.id}")
+      input(class="delete" type="submit" value="delete")
+    br
+    
+      
+  
+
+    
+  
+  h1 add an employee
+  form(action="/admin" method="POST")
+    input(name="firstname" placeholder="first")
+    input(name="lastname" placeholder="last")
+    input(name="restaurant_id" hidden value='#{id}')
+    input(type="submit" value="add")
+  br
+  br
+  br
+
   
